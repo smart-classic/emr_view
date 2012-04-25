@@ -1,0 +1,43 @@
+<!-- 09/09/11 - basic example of multiple saved canvases -->
+<emrview>
+<canvas id="medications" name="Medications">
+   <column>
+      <widget>
+         <id>med-list@apps.smartplatforms.org</id>
+         <height>270px</height>
+      </widget>
+      <widget>
+         <id>got-claritin@apps.smartplatforms.org</id>
+         <height>60px</height>
+      </widget>
+   </column>
+   <column>
+      <widget>
+         <id>problem-list@apps.smartplatforms.org</id>
+         <height>270px</height>
+      </widget>
+      <widget>
+         <id>mini-statins@apps.smartplatforms.org</id>
+         <height>60px</height>
+      </widget>
+   </column>
+</canvas>
+<canvas id="problems" name="Problems">
+   <column>
+      <widget>
+         <id>got-claritin@apps.smartplatforms.org</id>
+         <height>60px</height>
+      </widget>
+   </column>
+   <column>
+      <widget>
+         <id>problem-list@apps.smartplatforms.org</id>
+         <height>270px</height>
+      </widget>
+      <widget>
+         <id>mini-statins@apps.smartplatforms.org</id>
+         <height>60px</height>
+      </widget>
+   </column>
+</canvas>
+</emrview>

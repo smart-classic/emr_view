@@ -1,0 +1,1 @@
+var demographics_app_url = "http://192.168.80.128/apps/demographics/";
