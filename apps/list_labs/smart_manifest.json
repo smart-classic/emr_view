@@ -1,0 +1,14 @@
+{
+  "name" : "Labs List",
+  "description" : "Display lab results in a list",
+  "author" : "i2b2",
+  "id" : "lab-results@apps.smartplatforms.org",
+  "version" : ".1a",
+  "intents": ["view_labs"],
+
+  "mode" : "ui",
+  "scope": "record",
+
+  "index" : "http://smarti2b2.org/apps/list_labs/index.html",
+  "icon" :  "http://smarti2b2.org/apps/list_labs/icon.png"
+}

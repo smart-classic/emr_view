@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Labs List</title>
+    <link type="text/css" rel="stylesheet" href="css/data_tables_plugin.css">
+	<link type="text/css" rel="stylesheet" href="css/custom.css">
+	<script type="text/javascript" src='js/smart-api-client.js'></script>
+	<script type="text/javascript" src='js/jquery.dataTables.js'></script>
+	<script type="text/javascript" src='js/custom.js'></script>
+	
+<script type="text/javascript">  
+SMART.ready(function(){
+    SMART.LAB_RESULTS_get(function(labs) {
+	var laboratory = labs.graph.where("?l rdf:type sp:LabResult")
+	.where("?l sp:labName ?ln")
+	.where("?ln dcterms:title ?labsname")
+	.where("?l sp:quantitativeResult ?qr")
+	.where("?qr sp:valueAndUnit ?vau")
+	.where("?vau sp:value ?labsvalue") 
+	.where("?vau sp:unit ?labsunit")
+        .optional("?l sp:specimenCollected ?qc")
+        .optional("?qc sp:startDate ?date")
+	.each(function(){
+	     if(!isNaN(this.labsvalue.value) && this.labsunit.value !== '@'){  // i2b2 temp fix
+		$('#createTable').dataTable().fnAddData( [
+		this.labsname.value,
+		this.date.value,
+		this.labsvalue.value,
+		this.labsunit.value ] );
+	     }
+	});
+    });
+});	
+
+</script>
+</head>
+<body>
+
+<div class="searchFilter">
+	<div><img src="images/new/magnifer.gif" alt="Search" title="Search" class="utilitiesFilter" /></div>
+</div>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="createTable" summary="Table of patient's problems listed out">
+<thead>
+<tr>
+<th style="padding-left:35px;">name</th>
+<th>date</th>
+<th>value</th>
+<th>unit</th>
+</tr>
+<tr class="filterColumn">
+	<th colspan="4" style=" padding-left: 8px;">
+		<img src="images/new/magnifer.gif" alt="Search" title="Search" class="searchFilter" />
+		<input type="text" name="col1_filter" value="Search for a specific problem(s)" id="col1_filter" class="search_init" />
+		<div id="changeFont"><span>Font Size</span>
+			<a href="#" style="font-size: 10px" id="small" class="resize" title="Small Font Size">A</a>
+			<a href="#" style="font-size: 12px" id="normal" class="resize" title="Normal Font Size">A</a>
+			<a href="#" style="font-size: 16px" id="large" class="resize" title="Large Font Size">A</a>
+		</div>
+	</th>
+	
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+  </body>
+</html>

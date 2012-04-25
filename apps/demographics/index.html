@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demographics</title>
+    <style>
+    #TheAnswer{
+         font-weight: bold; font-size: 16px; font-family: Arial, sans-serif; text-decoration: none; color: black; padding:6px;
+	 -moz-border-radius: 5px;
+	 -webkit-border-radius: 5px;
+	 border-radius: 5px;
+	 -khtml-border-radius: 5px;
+    }
+    .vtext {
+        color:#000;font-size:11px;font-family:Arial;
+    }
+    </style>
+        <script  src='/includes/smart-api-client.js'></script>
+        <script language="javascript">
+
+function capitalize(val) {
+        val = val.toLowerCase();
+        var newVal = val.substring(0,1).toUpperCase() + val.substring(1,val.length);
+
+        return newVal;
+}
+
+function calculate_age(birth_year,birth_month,birth_day) {
+    today_date = new Date();
+    today_year = today_date.getFullYear();
+    today_month = today_date.getMonth();
+    today_day = today_date.getDate();
+    age = today_year - birth_year;
+    if ( today_month < (birth_month - 1))
+    {
+      age--;
+    }
+    if (((birth_month - 1) == today_month) && (today_day < birth_day))
+    { 
+      age--;
+    }
+  return age;
+}
+
+SMART.ready(function(){
+        SMART.DEMOGRAPHICS_get(function(demo) {
+
+        var person = demo.graph.where("?d rdf:type sp:Demographics")
+        .prefix('foaf', 'http://xmlns.com/foaf/0.1/')
+	.prefix('v', 'http://www.w3.org/2006/vcard/ns#')
+        .prefix('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
+	.prefix('sp', 'http://smartplatforms.org/terms#')
+	.prefix('dcterms', 'http://purl.org/dc/terms/')
+        .where("?d v:n ?n")
+        .where("?n v:given-name ?givenname")
+        .where("?n v:family-name ?familyname")
+	.where("?d foaf:gender ?gender")
+	.where("?d v:bday ?bday")
+        .where("?d sp:medicalRecordNumber ?mrn")
+        .where("?mrn dcterms:identifier ?mrntitle")
+	.optional("?d sp:race ?race");
+
+
+          var patient_name = document.getElementById("pat_name");
+          var patient_id = document.getElementById("pat-id");
+	  var patient_gender = document.getElementById("pat-gender");
+	  var patient_bday = document.getElementById("pat-bday");
+	  var patient_race = document.getElementById("pat-race");
+	  var patient_ages = document.getElementById("pat-age");
+
+	  var patient_age = calculate_age(person[0].bday.value.substring(0,4),person[0].bday.value.substring(6,8),person[0].bday.value.substring(10,12));
+
+          patient_name.innerHTML = person[0].givenname.value + ' ' + person[0].familyname.value;
+          patient_id.innerHTML = 'Num: ' + person[0].mrntitle.value;
+	  patient_gender.innerHTML = 'Sex: ' + capitalize(person[0].gender.value);
+	  patient_bday.innerHTML = 'Birth Date: ' + person[0].bday.value;
+	  patient_ages.innerHTML = 'Age: ' + patient_age + ' years (current)';
+
+	  if(person[0].race !== undefined){
+	     patient_race.innerHTML = 'Race: ' + capitalize(person[0].race.value);
+	  }
+
+        });
+
+});
+
+        </script>
+
+
+  </head>
+  <body>
+
+<span id="pat_name" style="color:#888;font-size:24px;font-family:Arial">...</span><br/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="50%" id="demo-left" class="vtext" valign="top">
+<span id="pat-id"></span><br/>
+<span id="pat-bday"></span><br/>
+<span id="pat-age"></span></td>
+<td width="50%" class="vtext" valign="top" style="padding-left:10px;">
+<span id="pat-gender"></span><br/>
+<span id="pat-race"></span><br/>
+
+</td>
+</tr>
+</table>
+
+  </body>
+</html>

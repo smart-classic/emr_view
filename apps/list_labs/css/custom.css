@@ -1,0 +1,44 @@
+/*
+ *  File:         custom.css
+ *  CVS:          $Id$
+ *  Description:  CSS descriptions
+ *  Author:       Stella Ubaha
+ *  Created:      Thursday March 01 12:00:00 EST 2012
+ *  Modified:     $date$ by $author$
+ *  Language:     CSS
+ *  Project:      List Apps
+ *
+ *  Copyright 2012 Stella Ubaha. All Rights Reserved.
+ *
+ */
+body {margin: 0;}
+a:link {color: #04408C;}
+.dataTables_wrapper {font-family:Arial;font-size:12px}
+#createTable tbody tr.theGroup th{ padding: 3px 5px; text-align:left; font-weight: 400; cursor:pointer; border-bottom: 1px solid #e0e0e0; background:transparent url(../images/new/b_arr_close.png) no-repeat scroll 6px 8px;}
+#createTable tbody tr.theGroup th.whenSeem{background:transparent none;}
+#createTable tbody tr.theGroup th.up{border-bottom: 1px solid #0157D0; color:#fff; padding: 3px 8px; background: #0272EF url(../images/new/w_arr_dn.png) no-repeat scroll 6px 12px;}
+#createTable tbody tr.theGroup th.up.whenSeem{border-bottom: 1px solid #0157D0; color:#fff; background: #0272EF none;}
+#createTable thead tr{background: transparent url(../images/new/theader_bg.png) repeat-x scroll left bottom; height:33px; border: 1px solid #e0e0e0;}
+table.display thead th {border-bottom: 1px dotted #e0e0e0; font-size: 14px; font-family:Trebuchet MS; text-align:left; padding: 3px 5px; text-transform:uppercase; white-space:nowrap;}
+#createTable tbody tr.theGroup th:first-child, #createTable tbody tr.children td:first-child{padding-left: 25px;}
+#createTable tr.odd td, #createTable tr.even td {padding: 3px 8px;}
+table.display tfoot th {border-top: 1px solid #e0e0e0;}
+table.display {border-top: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0; border: none; margin-bottom:10px;}
+#createTable tbody tr.theGroup{color: #333; font-size: 13px; height: 33px; background: #fff url(../images/new/theader_bg.png) repeat-x scroll left top; padding-left: 20px;}
+/*.dataTables_filter {background: transparent url(../images/new/search_bg.png) no-repeat scroll right top; padding-top: 12px; height: 40px; width: 300px;}
+.dataTables_filter input {border:none;}*/
+.dataTables_filter label {font-weight: bold;}
+.dataTables_filter input {margin-left: 18px; margin-right: 21px; width: 190px; padding-left:6px;}
+.dataTables_filter input {border: 1px solid #ccc; height:20px; margin:10px 0 15px 6px; -moz-border-radius: 5px; border-radius: 5px;}
+
+#changeFont {position:relative;	height:18px; margin-top: -5px; float: left; padding:5px; display:block; width: 140px;}
+.resize {margin:0; text-align:right; font-weight:bold;}
+#changeFont span {margin:0 4px 0; text-align:right; font-size: 12px; }
+div.searchFilter {display:block; clear:both; position:relative; z-index:1000;}
+input#col1_filter {float: left; width:220px; height:20px; border: 1px solid #999999; display:block; color: #999999; position:relative; background:#ffffff /*url(images/new/magnifer.gif) no-repeat scroll right center*/;}
+div.searchFilter img.utilitiesFilter {opacity: 0.45; display:block; clear:both; position:absolute; z-index:900; left: 8px; bottom: -22px; cursor:pointer; width: 16px; height: 13px;}
+div.searchFilter img.utilitiesFilter:hover {opacity: 1;}
+div.searchFilter {display:block; clear:both; }
+#createTable thead tr.filterColumn {display:none;}
+
+tr.filterColumn img.searchFilter {display:inline-block; position: relative; cursor:pointer; float: left; width: 16px; padding: 3px 4px 3px 0;}

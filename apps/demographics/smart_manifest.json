@@ -1,0 +1,12 @@
+{
+  "name" : "Person Info",
+  "description" : "View demographics on an individual",
+  "author" : "i2b2",
+  "id" : "person-info@apps.smartplatforms.org",
+  "version" : ".1a",
+
+  "mode" : "ui",
+  "scope": "record",
+  "index" : "http://smarti2b2.org/apps/demographics/index.html",
+  "icon" :  "http://smarti2b2.org/apps/demographics/icon.png"
+}
